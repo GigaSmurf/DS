@@ -1,0 +1,117 @@
+@font-face {
+    font-family: Microsoft;
+    src: url('../C64_Pro_Mono-STYLE.ttf');
+  }
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .typing {
+    width: 16ch;
+    animation: typing 4s steps(27), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: Microsoft;
+    font-size: 2em;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
+  .icon {
+    display: block;
+    position: absolute;
+
+    font-size: 10px;
+    text-align: center;
+
+    width: 125px;
+    border: 1px solid transparent;
+    font-family: Microsoft;
+   
+}
+
+.icon:hover {
+    cursor: pointer;
+    opacity: .75;
+}
+
+
+
+
+.icon img {
+    width: 60%;
+    margin: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.icon a {
+    width: 100%;
+    font-size: 1em;
+    
+}
+
+.modal {
+  font-size: 12px;
+  background-color: #929292;
+  width: 50em;
+  justify-content: center;
+}
+.modal > .header {
+  background-color: #bdbebd;
+  width: 100%;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  text-align: center;
+  /* padding: .1em; */
+  height: 1.25em;
+}
+.modal > .content {
+  width: 100%;
+  padding: 1em;
+  overflow: hidden;
+}
+/* .modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+} */
+.header > .close {
+  position: absolute;
+  height: 1em;
+  cursor: pointer;
+  display: block;
+  line-height: 20px;
+  right: 0;
+  top: 0;
+  font-size: 24px;
+  background: #c70c0c;
+  /* border: 1px solid #cfcece; */
+}
+
+.close:hover{
+  background: #af0707;
+}
+
+.popup-arrow{
+  display: none;
+}

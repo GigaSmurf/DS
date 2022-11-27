@@ -1,0 +1,84 @@
+/* body {
+    background-color:#EAF2E3;
+  } */
+  @font-face {
+    font-family: Microsoft;
+    src: url('../C64_Pro_Mono-STYLE.ttf');
+  }  
+
+
+  .button {
+    float: right;
+    margin: 0px 50px 0 0;
+    background-color: #E75448;
+    padding: 10px 15px;
+    color: white;
+    font-family: helvetica, arial, sans-serif;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  
+  a.button {
+    text-decoration: none;
+  }
+  
+  .invisible {
+    visibility: hidden;
+  }
+  
+  /* BOARD */
+  #board {
+      padding: 100px 30px 30px;
+      margin-top: 40px;
+      overflow-y: visible;
+      /* @extend .noflick; */
+  }
+  
+  /* NOTE */
+  .text p {
+    font-family: Microsoft;
+  }
+  
+  .note {
+      float: right;
+      display: block;
+      position: relative;
+      padding: 1em;
+      width: 300px;
+      min-height: 300px;
+      margin: 0 30px 30px 0;
+      background: linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,.25));
+      background-color: #FFFD75;
+      box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
+      transform: rotate(2deg);
+      transform: skew(-1deg,1deg);
+      transition: transform .15s;
+      z-index: 1;
+  
+  }
+  .note:hover {
+    cursor: move;
+  }
+  
+  
+      textarea {
+          z-index: 998;
+          background-color: transparent;
+          border: none;
+          resize: vertical;
+          font-family: Microsoft;
+          width: 100%;
+      height: 100%;
+          padding: 5px;
+      font-size: 15pt;
+  }
+  
+  textarea:focus {
+              outline: none;
+              border: none;
+              box-shadow: 0 0 5px 1px rgba(0,0,0,.2) inset;
+  }
+          
+  
+  
+  
