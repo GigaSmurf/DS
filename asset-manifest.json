@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/DS/static/css/main.2cb03815.chunk.css",
+    "main.js": "/DS/static/js/main.0f282b4b.chunk.js",
+    "main.js.map": "/DS/static/js/main.0f282b4b.chunk.js.map",
+    "runtime-main.js": "/DS/static/js/runtime-main.bc5dc33e.js",
+    "runtime-main.js.map": "/DS/static/js/runtime-main.bc5dc33e.js.map",
+    "static/js/2.8a855150.chunk.js": "/DS/static/js/2.8a855150.chunk.js",
+    "static/js/2.8a855150.chunk.js.map": "/DS/static/js/2.8a855150.chunk.js.map",
+    "static/js/3.eb494a3b.chunk.js": "/DS/static/js/3.eb494a3b.chunk.js",
+    "static/js/3.eb494a3b.chunk.js.map": "/DS/static/js/3.eb494a3b.chunk.js.map",
+    "index.html": "/DS/index.html",
+    "static/css/main.2cb03815.chunk.css.map": "/DS/static/css/main.2cb03815.chunk.css.map",
+    "static/js/2.8a855150.chunk.js.LICENSE.txt": "/DS/static/js/2.8a855150.chunk.js.LICENSE.txt",
+    "static/media/sticky.css": "/DS/static/media/C64_Pro_Mono-STYLE.c671b8d8.ttf",
+    "static/media/Windows_Vista.75bccff9.png": "/DS/static/media/Windows_Vista.75bccff9.png",
+    "static/media/ie.45081dbb.png": "/DS/static/media/ie.45081dbb.png",
+    "static/media/resume.0a46ef5e.pdf": "/DS/static/media/resume.0a46ef5e.pdf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bc5dc33e.js",
+    "static/js/2.8a855150.chunk.js",
+    "static/css/main.2cb03815.chunk.css",
+    "static/js/main.0f282b4b.chunk.js"
+  ]
+}
