@@ -1,73 +1,86 @@
 @font-face {
-    font-family: Microsoft;
-    src: url('../C64_Pro_Mono-STYLE.ttf');
-  }
+  font-family: Microsoft;
+  src: url('../C64_Pro_Mono-STYLE.ttf');
+}
+
+@font-face {
+  font-family: 'MS Sans Serif';
+  src: url('../micross.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: W95;
+  src: url('../W95FA.otf') format('opentype');
+}
 
 .wrapper {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .typing {
-    width: 16ch;
-    animation: typing 4s steps(27), blink .5s step-end infinite alternate;
-    white-space: nowrap;
-    overflow: hidden;
-    border-right: 3px solid;
-    font-family: Microsoft;
-    font-size: 2em;
-  }
-  
-  @keyframes typing {
-    from {
-      width: 0
-    }
-  }
-      
-  @keyframes blink {
-    50% {
-      border-color: transparent
-    }
-  }
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .icon {
-    display: block;
-    position: absolute;
+.typing {
+  width: 16ch;
+  animation: typing 4s steps(27), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: W95;
+  font-size: 2em;
+}
 
-    font-size: 10px;
-    text-align: center;
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
 
-    width: 125px;
-    border: 1px solid transparent;
-    font-family: Microsoft;
-   
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+.icon {
+  display: flex;
+  /* stack children vertically */
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+
+  font-size: 16px;
+  text-align: center;
+  color: white;
+
+  width: 125px;
+  border: 1px solid transparent;
+  font-family: W95;
+
 }
 
 .icon:hover {
-    cursor: pointer;
-    opacity: .75;
+  cursor: pointer;
+  opacity: .75;
 }
-
-
-
 
 .icon img {
-    width: 60%;
-    margin: auto;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+  width: 40%;
+  margin: auto;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  margin-bottom: 5px;
 }
 
+/* 
 .icon a {
-    width: 100%;
-    font-size: 1em;
-    
-}
+  width: 100%;
+  font-size: 1em;
+
+} */
 
 .modal {
   font-size: 12px;
@@ -75,7 +88,8 @@
   width: 50em;
   justify-content: center;
 }
-.modal > .header {
+
+.modal>.header {
   background-color: #bdbebd;
   width: 100%;
   border-bottom: 1px solid black;
@@ -84,18 +98,21 @@
   /* padding: .1em; */
   height: 1.25em;
 }
-.modal > .content {
+
+.modal>.content {
   width: 100%;
   padding: 1em;
   overflow: hidden;
+  box-sizing: border-box;
 }
+
 /* .modal > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
 } */
-.header > .close {
+.header>.close {
   position: absolute;
   height: 1em;
   cursor: pointer;
@@ -108,10 +125,121 @@
   /* border: 1px solid #cfcece; */
 }
 
-.close:hover{
+.close:hover {
   background: #af0707;
 }
 
-.popup-arrow{
+.popup-arrow {
   display: none;
+}
+
+
+.win98-button {
+  display: inline-block;
+  padding: 5px 15px;
+  margin-top: 10px;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 12px;
+  background-color: #c0c0c0;
+  border: 2px outset white;
+  text-shadow: none;
+  cursor: pointer;
+}
+
+.win98-button:hover {
+  background-color: #e0e0e0;
+}
+
+.win98-button:active {
+  border: 2px inset white;
+}
+
+h2,
+p {
+  font-family: W95;
+}
+
+/* Folder */
+.file-explorer {
+  display: flex;
+  border: 2px solid #000;
+  background-color: #c0c0c0;
+}
+
+.side-panel {
+  flex: 1;
+  padding: 10px;
+  border-right: 2px solid #000;
+}
+
+.main-panel {
+  flex: 2;
+  padding: 10px;
+}
+
+.folder,
+.file {
+  padding: 4px 10px;
+  border: 1px solid transparent;
+  margin: 4px 0;
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 12px;
+  background-color: #c0c0c0;
+  /* Added this for a consistent background */
+  color: black;
+  /* Ensuring consistent text color */
+  text-align: left;
+}
+
+.folder:hover,
+.file:hover {
+  background-color: #000080;
+  color: white;
+  cursor: pointer;
+}
+
+button.folder,
+button.file {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.folder::before {
+  content: '📁';
+  margin-right: 5px;
+}
+
+.file::before {
+  content: '📄';
+  margin-right: 5px;
+}
+
+.file{
+  width: 350px;
+}
+
+/* recycle bin */
+.filer{
+  display: flex; /* Use flexbox to align icon and text side by side */
+  align-items: center; /* Vertical alignment of contents */
+  padding: 5px 10px; /* Grey border similar to Windows 98 */
+  font-family: 'MS Sans Serif', sans-serif;
+  font-size: 12px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+  background-color: #c0c0c0; /* A grey color similar to Windows 98 */
+}
+
+.filer:hover {
+  background-color: #000080; /* Dark blue when hovered */
+  color: white;
+}
+
+.filer img {
+  margin-right: 10px; /* Space between the icon and text */
 }

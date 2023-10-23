@@ -55,7 +55,7 @@ import './css/sticky.css'
 // console.log('drag')}
 const Sticky = () => {
     //texthere
-    const texthere= "TODO list:\n\n-code\n\n-eat\n\n-gym"
+    const texthere= "TODO list:\n\n☑code\n\n☐eat\n\n☐gym"
     
     return (  
         

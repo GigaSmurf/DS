@@ -16,7 +16,7 @@
 
 .border {
     display: flex;
-    background-color: lightblue;
+    background-color: #008080;
     cursor: pointer;
     width: 100%;
     height: 35px;
@@ -24,7 +24,7 @@
     z-index: 2;
 }
 
-.border span{
+.border span {
     float: left;
     margin: auto;
     margin-left: 10px;
@@ -39,7 +39,8 @@
     background-color: cornflowerblue;
 }
 
-.closeBtn, .openBtn {
+.closeBtn,
+.openBtn {
     display: flex;
     float: right;
     height: 100%;
@@ -48,11 +49,13 @@
     align-items: center;
 }
 
-.closeBtn:hover, .openBtn:hover {
+.closeBtn:hover,
+.openBtn:hover {
     filter: brightness(1.09);
 }
 
-.closeBtn a, .openBtn a {
+.closeBtn a,
+.openBtn a {
     display: inline-block;
 }
 
