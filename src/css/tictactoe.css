@@ -1,0 +1,133 @@
+@font-face {
+    font-family: W95;
+    src: url('../W95FA.otf') format('opentype');
+}
+
+body {
+    font-family: W95;
+}
+
+/* Game styles */
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Center the game board and info */
+    align-items: center; /* Align items vertically */
+    height: 60vh; /* Use the full height of the viewport */
+    background: #C0C0C0; /* Classic Windows 98 desktop color */
+    font-family: 'MS Sans Serif', sans-serif;
+  }
+  
+  .game-board {
+    width: 240px; /* Fixed width for the board */
+    padding: 10px;
+    background: #fff;
+    border: 2px outset #000; /* 3D effect */
+  }
+  
+  .game-info {
+    width: 240px; /* Fixed width for the game info */
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px; /* Space between board and info */
+  }
+  
+
+/* Board styles */
+.board-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.status {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    background: teal;
+    /* Windows 98 taskbar color */
+    padding: 2px 5px;
+}
+
+/* Square styles */
+.square {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    background: #f4f4f4;
+    border: 2px outset #fff;
+    /* 3D effect */
+    color: #000;
+}
+
+.square:hover {
+    background: #e4e4e4;
+}
+
+/* Colors for X and O */
+.square.x {
+    color: #d14545;
+    
+}
+
+.square.o {
+    color: #4578d1;
+
+}
+
+/* Moves list styles */
+.game-info ol {
+    padding-left: 30px;
+}
+
+.game-info li {
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+
+.game-info button {
+    background: #f4f4f4;
+    border: 2px outset #fff;
+    /* 3D effect */
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.game-info button:hover {
+    background: #e4e4e4;
+}
+
+/* Windows 98 title bar */
+.title-bar {
+    background: teal;
+    /* Windows 98 taskbar color */
+    color: white;
+    padding: 2px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-bar-text {
+    font-weight: bold;
+}
+
+.title-bar-buttons {
+    display: flex;
+}
+
+.title-bar-button {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    border: none;
+    background: #808080;
+    cursor: pointer;
+}

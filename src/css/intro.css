@@ -87,46 +87,56 @@
   background-color: #929292;
   width: 50em;
   justify-content: center;
+  position: relative; /* Added to position the close button correctly */
+  border-top: 1px solid #FFFFFF; /* Light border for top */
+  border-left: 1px solid #FFFFFF; /* Light border for left */
+  border-bottom: 2px solid #000000; /* Dark border for bottom */
+  border-right: 2px solid #000000; /* Dark border for right */
+  padding: 3px; /* This will allow the inner content to show the light border on top and left */
 }
 
+
+
 .modal>.header {
-  background-color: #bdbebd;
+  background-color: #000080;
   width: 100%;
   border-bottom: 1px solid black;
   font-size: 18px;
   text-align: center;
-  /* padding: .1em; */
   height: 1.25em;
 }
 
 .modal>.content {
   width: 100%;
-  padding: 1em;
+  padding-top: .5em;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* .modal > .actions {
-  width: 100%;
-  padding: 10px 5px;
-  margin: auto;
-  text-align: center;
-} */
 .header>.close {
   position: absolute;
-  height: 1em;
+  height: .75em;
+  width: .75em;
   cursor: pointer;
   display: block;
-  line-height: 20px;
-  right: 0;
-  top: 0;
+ 
+  right: 5.5px;
+  top: 5.5px;
   font-size: 24px;
-  background: #c70c0c;
-  /* border: 1px solid #cfcece; */
+  background: #C0C0C0;
+  color: black;
+
+  font-family: W95;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  line-height: 0px;
+  border: 2px outset #FFFFFF;
 }
 
-.close:hover {
-  background: #af0707;
+.header .close:hover {
+  background-color: #A0A0A0; /* Slightly darker gray on hover */
+  border: 2px inset #FFFFFF; /* Inset border for clicked effect */
 }
 
 .popup-arrow {

@@ -5,6 +5,9 @@ import folder from './icons/folder.png';
 import explorer from './icons/explorer.png';
 import linkedin from './icons/linkedin.png';
 import email from './icons/email.png';
+import tictactoe from './icons/tictactoe.png';
+import minesweeper from './icons/minesweeper.png';
+import music from './icons/cdaudio.png';
 export class Icon extends Component {
 
 
@@ -39,6 +42,15 @@ export class Icon extends Component {
                 break;
             case 'email':
                 img = <img src={email} alt="Outlook Express" className='style' />;
+                break;
+            case 'tictactoe':
+                img = <img src={tictactoe} alt="Tic Tac Toe" className='style' />;
+                break;
+            case 'minesweeper':
+                img = <img src={minesweeper} alt="Minesweeper" className='style' />;
+                break;
+            case 'music':
+                img = <img src={music} alt="Music" className='style' />;
                 break;
             default:
                 img = <img src={folder} alt="Icon img" />;

@@ -7,6 +7,7 @@ import Taskbar from './TaskBar';
 import { Icon } from './Icon';
 import Popup from 'reactjs-popup';
 import resume from './icons/rs.pdf'
+import TicTacToe from './TicTacToe.jsx'
 // import Draggable from './draggables';
 import lolLogo from './icons/League_of_Legends.png';
 
@@ -174,7 +175,72 @@ const Home = () => {
                       </button>
                     </div>
                     <div className="content">
-                      <iframe src="https://google.com?igu=1" width="100%" height="550px"></iframe>
+                      <iframe src="https://web.archive.org/web/1998/https://www.google.com/" width="100%" height="550px"></iframe>
+                    </div>
+                  </div>
+                )}
+
+              </Popup>
+              {/* Tic Tac Toe application */}
+              <Popup trigger={
+                <div id='button' onClick={clicker}>
+                  <Icon key={0} id={0} icon='tictactoe' text="Tic Tac Toe" left={90} top={210} />
+                </div>
+              }>
+
+                {close => (
+                  <div className="modal">
+                    <div className="header">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                    </div>
+                    <div className="content">
+                      <TicTacToe></TicTacToe>
+                    </div>
+                  </div>
+                )}
+
+              </Popup>
+
+              {/* Minesweeper application */}
+              <Popup trigger={
+                <div id='button' onClick={clicker}>
+                  <Icon key={0} id={0} icon='minesweeper' text="Minesweeper" left={90} top={310} />
+                </div>
+              }>
+
+                {close => (
+                  <div className="modal">
+                    <div className="header">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                    </div>
+                    <div className="content">
+                      Coming soon!
+                    </div>
+                  </div>
+                )}
+
+              </Popup>
+
+              {/* Music application */}
+              <Popup trigger={
+                <div id='button' onClick={clicker}>
+                  <Icon key={0} id={0} icon='music' text="Music" left={-10} top={410} />
+                </div>
+              }>
+
+                {close => (
+                  <div className="modal">
+                    <div className="header">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
+                    </div>
+                    <div className="content">
+                      Coming soon!
                     </div>
                   </div>
                 )}
