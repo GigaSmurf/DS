@@ -135,17 +135,20 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <object title='myframe' type="application/pdf" data={resume} width="100%" height="550px">
+                        </object>
+                      </div>
                     </div>
-                    <div className="content">
-                      <object title='myframe' type="application/pdf" data={resume} width="100%" height="550px">
-                      </object>
-                    </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
@@ -161,36 +164,39 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
-                    </div>
-                    <div className="content">
-                      <div className="file-explorer">
-                        <div className="side-panel">
-                          <div className="folder">My Computer</div>
-                          <div className="folder">C:</div>
-                          <div className="folder">D:</div>
-                          <div className="folder">Control Panel</div>
-                          <div className="folder">Network Neighborhood</div>
-                        </div>
-                        <div className="main-panel">
-                          {/* <Popup className="file" trigger={
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <div className="file-explorer">
+                          <div className="side-panel">
+                            <div className="folder">My Computer</div>
+                            <div className="folder">C:</div>
+                            <div className="folder">D:</div>
+                            <div className="folder">Control Panel</div>
+                            <div className="folder">Network Neighborhood</div>
+                          </div>
+                          <div className="main-panel">
+                            {/* <Popup className="file" trigger={
                             <button className="file" onClick={() => window.open('https://www.linkedin.com/in/dylansyahputra', '_blank')}>chess.exe</button>
                           }>
 
                           </Popup> */}
-                          <button className="file" onClick={() => window.open('https://chess-ai-68a9ea2be35e.herokuapp.com/', '_blank')}>chess.exe</button>
-                          <button className="file" onClick={() => window.open('https://gigasmurf.github.io/GigaSmurf-Web/', '_blank')}>gigasmurf.exe</button>
-                          <button className="file" onClick={() => window.open('https://devpost.com/nalydputra', '_blank')}>devpost.html</button>
-                          <button className="file" onClick={() => window.open('https://github.com/GigaSmurf', '_blank')}>github.html</button>
-                          <button className="file">comingsoon.txt</button>
+                            <button className="file" onClick={() => window.open('https://chess-ai-68a9ea2be35e.herokuapp.com/', '_blank')}>chess.exe</button>
+                            <button className="file" onClick={() => window.open('https://gigasmurf.github.io/GigaSmurf-Web/', '_blank')}>gigasmurf.exe</button>
+                            <button className="file" onClick={() => window.open('https://devpost.com/nalydputra', '_blank')}>devpost.html</button>
+                            <button className="file" onClick={() => window.open('https://github.com/GigaSmurf', '_blank')}>github.html</button>
+                            <button className="file">comingsoon.txt</button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
@@ -206,19 +212,23 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <iframe src="https://web.archive.org/web/1998/https://www.google.com/" width="100%" height="550px"></iframe>
+                      </div>
                     </div>
-                    <div className="content">
-                      <iframe src="https://web.archive.org/web/1998/https://www.google.com/" width="100%" height="550px"></iframe>
-                    </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
+
               {/* Tic Tac Toe application */}
               <div onDoubleClick={() => handleDoubleClick('tictactoe')} id='button'>
                 <Icon key={3} id={3} icon='tictactoe' text="Tic Tac Toe" left={90} top={210} />
@@ -230,16 +240,19 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <TicTacToe></TicTacToe>
+                      </div>
                     </div>
-                    <div className="content">
-                      <TicTacToe></TicTacToe>
-                    </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
@@ -255,16 +268,18 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        Coming soon!
+                      </div>
                     </div>
-                    <div className="content">
-                      Coming soon!
-                    </div>
-                  </div>
+                  </Draggable>
                 )}
 
               </Popup>
@@ -280,16 +295,19 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        Coming soon!
+                      </div>
                     </div>
-                    <div className="content">
-                      Coming soon!
-                    </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
@@ -305,24 +323,27 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
-                    </div>
-                    <div className="content">
-                      {/* <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script> */}
-                      {/* <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="dylansyahputra" data-version="v1">
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        {/* <script src="https://platform.linkedin.com/badges/js/profile.js" async defer></script> */}
+                        {/* <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="dylansyahputra" data-version="v1">
                         <a class="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/dylansyahputra?trk=profile-badge">Dylan Syahputra</a>
                       </div> */}
-                      {/* <iframe src="http://bit.ly/3Membk2" width="95%" height="550px"></iframe> */}
-                      <button class="win98-button" onClick={() => window.open('https://www.linkedin.com/in/dylansyahputra', '_blank')}>
-                        Connect
-                      </button>
+                        {/* <iframe src="http://bit.ly/3Membk2" width="95%" height="550px"></iframe> */}
+                        <button class="win98-button" onClick={() => window.open('https://www.linkedin.com/in/dylansyahputra', '_blank')}>
+                          Connect
+                        </button>
 
+                      </div>
                     </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
@@ -338,17 +359,20 @@ const Home = () => {
               >
 
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <h2>Contact Me</h2>
+                        <p>Thank you for reaching out! If you decide to send me an email, please know that I value your message and will make it a priority to get back to you as soon as possible. I appreciate your patience and look forward to connecting with you.</p>
+                      </div>
                     </div>
-                    <div className="content">
-                      <h2>Contact Me</h2>
-                      <p>Thank you for reaching out! If you decide to send me an email, please know that I value your message and will make it a priority to get back to you as soon as possible. I appreciate your patience and look forward to connecting with you.</p>
-                    </div>
-                  </div>
+
+                  </Draggable>
                 )}
 
               </Popup>
