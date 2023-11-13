@@ -8,6 +8,7 @@ import email from './icons/email.png';
 import tictactoe from './icons/tictactoe.png';
 import minesweeper from './icons/minesweeper.png';
 import music from './icons/cdaudio.png';
+import Draggable from 'react-draggable';
 export class Icon extends Component {
 
 
@@ -56,6 +57,7 @@ export class Icon extends Component {
                 img = <img src={folder} alt="Icon img" />;
         }
         return (
+            <Draggable>
             <div className="icon"
                 id={this.props.id}
                 // onMouseDown={this.props.onMouseDown}
@@ -64,6 +66,7 @@ export class Icon extends Component {
                 {img}
                 {this.props.text}
             </div>
+            </Draggable>
         );
     }
 }

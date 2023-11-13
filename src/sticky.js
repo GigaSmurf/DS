@@ -1,5 +1,6 @@
 // import { useState } from 'react';
 import './css/sticky.css'
+import Draggable from 'react-draggable';
 // $( function() {
 //     $( ".draggable" ).draggable();
 //     // $(".add_new").click(function() {
@@ -55,20 +56,21 @@ import './css/sticky.css'
 // console.log('drag')}
 const Sticky = () => {
     //texthere
-    const texthere= "TODO list:\n\n☑code\n\n☐eat\n\n☐gym"
-    
-    return (  
-        
-    <div id="board">
-        <div class="note draggable" id='sticky' >
-			  <div class="text">
-                <textarea class="cnt" placeholder={texthere} rows='14'></textarea>
+    const texthere = "TODO list:\n\n☑code\n\n☐eat\n\n☐gym"
+
+    return (
+        <Draggable>
+            <div id="board">
+                <div class="note draggable" id='sticky' >
+                    <div class="text">
+                        <textarea class="cnt" placeholder={texthere} rows='14'></textarea>
+                    </div>
+                </div>
             </div>
-		</div>
-    </div>
-    
+        </Draggable>
+
     );
-    
+
 }
 
 export default Sticky;

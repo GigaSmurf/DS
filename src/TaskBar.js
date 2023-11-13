@@ -1,6 +1,6 @@
 import { Component } from "react";
 import logo from './icons/windows98logo.png';
-import folder from './icons/folder.png';
+// import folder from './icons/folder.png';
 import './css/taskbar.css';
 
 export class Taskbar extends Component {

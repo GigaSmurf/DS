@@ -28,10 +28,9 @@ a.button {
 
 /* BOARD */
 #board {
-  padding: 100px 30px 30px;
+  /* padding: 100px 30px 30px; */
   margin-top: 40px;
-  overflow-y: visible;
-  /* @extend .noflick; */
+  /* overflow-y: visible; */
 }
 
 /* NOTE */

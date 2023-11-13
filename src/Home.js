@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './css/intro.css'
 import './css/taskbar.css'
 import Sticky from "./sticky";
@@ -8,8 +8,10 @@ import { Icon } from './Icon';
 import Popup from 'reactjs-popup';
 import resume from './icons/rs.pdf'
 import TicTacToe from './TicTacToe.jsx'
-// import Draggable from './draggables';
+import Draggable from 'react-draggable';
 import lolLogo from './icons/League_of_Legends.png';
+
+
 
 const Home = () => {
   // const index = 0
@@ -42,8 +44,31 @@ const Home = () => {
     console.log('clicked')
   }
 
-  //   const colorChanger
+  // State object to control the visibility of all popups
+  const [popupsOpen, setPopupsOpen] = useState({
+    recycleBin: false,
+    resume: false,
+    folder: false,
+    explorer: false,
+    tictactoe: false,
+    minesweeper: false,
+    music: false,
+    linkedin: false,
+    email: false,
+    // Add additional popups here as needed
+  });
 
+  // Generalized function to handle double click event for all popups
+  const handleDoubleClick = (popupName) => {
+    setPopupsOpen({ ...popupsOpen, [popupName]: true });
+  };
+
+  // Generalized function to close any popup
+  const closePopup = (popupName) => {
+    setPopupsOpen({ ...popupsOpen, [popupName]: false });
+  };
+
+  const nodeRef = useRef(null);
   return (
     <div className="home">
       {isPending &&
@@ -58,49 +83,56 @@ const Home = () => {
           <>
             <BrowserView key={1}>
               {/* Recycling bin application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='recycle' text="Recycle Bin" left={-10} top={10} />
-                </div>
-              }>
-
+              <div onDoubleClick={() => handleDoubleClick('recycleBin')} id='button'>
+                <Icon key={0} id={0} icon='recycle' text="Recycle Bin" left={-10} top={10} />
+              </div>
+              <Popup
+                open={popupsOpen.recycleBin}
+                onClose={() => closePopup('recycleBin')}
+                modal
+              >
                 {close => (
-                  <div className="modal">
-                    <div className="header">
-                      <button className="close" onClick={close}>
-                        &times;
-                      </button>
-                    </div>
-                    <div className="content">
-                      <div className="file-explorer">
-                        <div className="side-panel">
-                          <div className="folder">Recycle Bin</div>
-                          <div className="folder">My Computer</div>
-                        </div>
-                        <div className="main-panel">
-                          {/* Other files... */}
-
-                          {/* League of Legends file with logo and redirect on click */}
-                          <div className="filer" onClick={() => window.open('https://www.op.gg/summoners/na/Gosu%20Uzi%20GALA', '_blank')}>
-                            <img src={lolLogo} alt="LoL Logo" width="20px" style={{ marginRight: '5px', verticalAlign: 'middle' }} />
-                            League of Legends.exe
+                  <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        <div className="file-explorer">
+                          <div className="side-panel">
+                            <div className="folder">Recycle Bin</div>
+                            <div className="folder">My Computer</div>
                           </div>
+                          <div className="main-panel">
+                            {/* Other files... */}
 
-                          {/* Other files... */}
+                            {/* League of Legends file with logo and redirect on click */}
+                            <div className="filer" onClick={() => window.open('https://www.op.gg/summoners/na/Gosu%20Uzi%20GALA', '_blank')}>
+                              <img src={lolLogo} alt="LoL Logo" width="20px" style={{ marginRight: '5px', verticalAlign: 'middle' }} />
+                              League of Legends.exe
+                            </div>
+
+                            {/* Other files... */}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </Draggable>
                 )}
 
               </Popup>
 
               {/* Resume application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='resume' text="Resume" left={90} top={10} />
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('resume')} id='button'>
+                <Icon key={1} id={1} icon='resume' text="Resume" left={90} top={10} />
+              </div>
+              <Popup
+                open={popupsOpen.resume}
+                onClose={() => closePopup('resume')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -119,11 +151,14 @@ const Home = () => {
               </Popup>
 
               {/* Folder application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='folder' text="My Documents" left={-10} top={110} />
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('folder')} id='button'>
+                <Icon key={2} id={2} icon='folder' text="My Documents" left={-10} top={110} />
+              </div>
+              <Popup
+                open={popupsOpen.folder}
+                onClose={() => closePopup('folder')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -161,11 +196,14 @@ const Home = () => {
               </Popup>
 
               {/* Internet Explorer application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='explorer' text="Internet Explorer" left={-10} top={210} />
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('explorer')} id='button'>
+                <Icon key={2} id={2} icon='explorer' text="Internet Explorer" left={-10} top={210} />
+              </div>
+              <Popup
+                open={popupsOpen.explorer}
+                onClose={() => closePopup('explorer')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -182,11 +220,14 @@ const Home = () => {
 
               </Popup>
               {/* Tic Tac Toe application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='tictactoe' text="Tic Tac Toe" left={90} top={210} />
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('tictactoe')} id='button'>
+                <Icon key={3} id={3} icon='tictactoe' text="Tic Tac Toe" left={90} top={210} />
+              </div>
+              <Popup
+                open={popupsOpen.tictactoe}
+                onClose={() => closePopup('tictactoe')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -204,11 +245,14 @@ const Home = () => {
               </Popup>
 
               {/* Minesweeper application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='minesweeper' text="Minesweeper" left={90} top={310} />
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('minesweeper')} id='button'>
+                <Icon key={4} id={4} icon='minesweeper' text="Minesweeper" left={90} top={310} />
+              </div>
+              <Popup
+                open={popupsOpen.minesweeper}
+                onClose={() => closePopup('minesweeper')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -226,11 +270,14 @@ const Home = () => {
               </Popup>
 
               {/* Music application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='music' text="Music" left={-10} top={410} />
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('music')} id='button'>
+                <Icon key={5} id={5} icon='music' text="Music" left={-10} top={410} />
+              </div>
+              <Popup
+                open={popupsOpen.music}
+                onClose={() => closePopup('music')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -248,12 +295,14 @@ const Home = () => {
               </Popup>
 
               {/* Neighborhood Network application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <Icon key={0} id={0} icon='linkedin' text="Network Neighborhood" left={90} top={110} />
-                </div>
-
-              }>
+              <div onDoubleClick={() => handleDoubleClick('linkedin')} id='button'>
+                <Icon key={7} id={7} icon='linkedin' text="Network Neighborhood" left={90} top={110} />
+              </div>
+              <Popup
+                open={popupsOpen.linkedin}
+                onClose={() => closePopup('linkedin')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
@@ -279,13 +328,14 @@ const Home = () => {
               </Popup>
 
               {/* Outlook Express application */}
-              <Popup trigger={
-                <div id='button' onClick={clicker}>
-                  <a href="mailto:nalyd.putra@gmail.com?subject=Hello&body=Thanks%20for%20visiting!" target="_blank" rel="noopener noreferrer">
-                    <Icon key={0} id={0} icon='email' text="Outlook Express" left={-10} top={310} />
-                  </a>
-                </div>
-              }>
+              <div onDoubleClick={() => handleDoubleClick('email')} id='button'>
+                <Icon key={8} id={8} icon='email' text="Outlook Express" left={-10} top={310} />
+              </div>
+              <Popup
+                open={popupsOpen.email}
+                onClose={() => closePopup('email')}
+                modal
+              >
 
                 {close => (
                   <div className="modal">
