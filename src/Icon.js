@@ -11,7 +11,6 @@ import music from './icons/cdaudio.png';
 import Draggable from 'react-draggable';
 export class Icon extends Component {
 
-
     render() {
         // var style = 'filler'
 
@@ -24,10 +23,18 @@ export class Icon extends Component {
         //         style = 'filler'
         //     }
         // }
+        // const { isSelected } = this.state;
         var img;
+        // Add a 'selected' class if the icon is selected
+        // const iconClasses = `icon ${isSelected ? 'selected' : ''}`;
+        const { id, onSelect, isSelected, text, top, left } = this.props;
+
+        // Use the 'isSelected' prop to add a 'selected' class to the icon
+        const iconClasses = `icon ${isSelected ? 'selected checkered-background' : ''}`;
+
         switch (this.props.icon) {
             case 'recycle':
-                img = <img src={recycle} alt="Recycle Bin" className='style' />;
+                img = <img src={recycle} alt="Recycle Bin" />;
                 break;
             case 'resume':
                 img = <img src={resume} alt="Text File" className='style' />;
@@ -58,14 +65,16 @@ export class Icon extends Component {
         }
         return (
             <Draggable>
-            <div className="icon"
-                id={this.props.id}
-                // onMouseDown={this.props.onMouseDown}
-                // onMouseUp={this.props.onMouseUp}
-                style={{ top: this.props.top, left: this.props.left }}>
-                {img}
-                {this.props.text}
-            </div>
+                <div className={iconClasses}
+                    id={id}
+                    // onMouseDown={this.props.onMouseDown}
+                    // onMouseUp={this.props.onMouseUp}
+                    style={{ top, left }}
+                    onClick={() => onSelect(id)}
+                >
+                    {img}
+                    <div className="icon-text">{text}</div>
+                </div>
             </Draggable>
         );
     }

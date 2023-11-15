@@ -61,7 +61,7 @@
 
 .icon:hover {
   cursor: pointer;
-  opacity: .75;
+  /* opacity: .75; */
 }
 
 .icon img {
@@ -87,12 +87,18 @@
   background-color: #929292;
   width: 50em;
   justify-content: center;
-  position: relative; /* Added to position the close button correctly */
-  border-top: 1px solid #FFFFFF; /* Light border for top */
-  border-left: 1px solid #FFFFFF; /* Light border for left */
-  border-bottom: 2px solid #000000; /* Dark border for bottom */
-  border-right: 2px solid #000000; /* Dark border for right */
-  padding: 3px; /* This will allow the inner content to show the light border on top and left */
+  position: relative;
+  /* Added to position the close button correctly */
+  border-top: 1px solid #FFFFFF;
+  /* Light border for top */
+  border-left: 1px solid #FFFFFF;
+  /* Light border for left */
+  border-bottom: 2px solid #000000;
+  /* Dark border for bottom */
+  border-right: 2px solid #000000;
+  /* Dark border for right */
+  padding: 3px;
+  /* This will allow the inner content to show the light border on top and left */
 }
 
 
@@ -119,7 +125,7 @@
   width: .75em;
   cursor: pointer;
   display: block;
- 
+
   right: 5.5px;
   top: 5.5px;
   font-size: 24px;
@@ -135,8 +141,10 @@
 }
 
 .header .close:hover {
-  background-color: #A0A0A0; /* Slightly darker gray on hover */
-  border: 2px inset #FFFFFF; /* Inset border for clicked effect */
+  background-color: #A0A0A0;
+  /* Slightly darker gray on hover */
+  border: 2px inset #FFFFFF;
+  /* Inset border for clicked effect */
 }
 
 .popup-arrow {
@@ -228,28 +236,73 @@ button.file {
   margin-right: 5px;
 }
 
-.file{
+.file {
   width: 350px;
 }
 
 /* recycle bin */
-.filer{
-  display: flex; /* Use flexbox to align icon and text side by side */
-  align-items: center; /* Vertical alignment of contents */
-  padding: 5px 10px; /* Grey border similar to Windows 98 */
+.filer {
+  display: flex;
+  /* Use flexbox to align icon and text side by side */
+  align-items: center;
+  /* Vertical alignment of contents */
+  padding: 5px 10px;
+  /* Grey border similar to Windows 98 */
   font-family: 'MS Sans Serif', sans-serif;
   font-size: 12px;
   color: black;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition for hover effects */
-  background-color: #c0c0c0; /* A grey color similar to Windows 98 */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for hover effects */
+  background-color: #c0c0c0;
+  /* A grey color similar to Windows 98 */
 }
 
 .filer:hover {
-  background-color: #000080; /* Dark blue when hovered */
+  background-color: #000080;
+  /* Dark blue when hovered */
   color: white;
 }
 
 .filer img {
-  margin-right: 10px; /* Space between the icon and text */
+  margin-right: 10px;
+  /* Space between the icon and text */
+}
+
+
+
+.icon.selected .icon-text {
+  background-color: transparent;
+  /* Make sure the background is transparent */
+  color: white;
+  /* Text color */
+  padding: 1px;
+  /* Some padding to see the checkered pattern */
+  border: .5px dashed #fcfc04;
+  /* Border to match the checkered pattern */
+  background-color: #000080;
+  max-width: 101px;
+}
+
+/* .checkered-background {
+  background-image:
+    linear-gradient(45deg, #000080 25%, transparent 25%, transparent 75%, #000080 75%, #000080),
+    linear-gradient(45deg, #000080 25%, transparent 25%, transparent 75%, #000080 75%, #000080);
+  background-position: 0 0, 10px 10px;
+  background-size: 20px 20px;
+} */
+
+.icon.selected img {
+  -webkit-mask-image: linear-gradient(45deg, #000080 25%, transparent 25%),
+    linear-gradient(-45deg, #000080 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000080 75%),
+    linear-gradient(-45deg, transparent 75%, #000080 75%);
+  mask-image: linear-gradient(45deg, #000080 25%, transparent 25%),
+    linear-gradient(-45deg, #000080 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #000080 75%),
+    linear-gradient(-45deg, transparent 75%, #000080 75%);
+  -webkit-mask-size: 4px 4px;
+  mask-size: 4px 4px;
+  -webkit-mask-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+  mask-position: 0 0, 0 2px, 2px -2px, -2px 0px;
 }

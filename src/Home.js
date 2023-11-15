@@ -55,7 +55,6 @@ const Home = () => {
     music: false,
     linkedin: false,
     email: false,
-    // Add additional popups here as needed
   });
 
   // Generalized function to handle double click event for all popups
@@ -69,6 +68,19 @@ const Home = () => {
   };
 
   const nodeRef = useRef(null);
+
+  const [selectedIconId, setSelectedIconId] = useState(null);
+
+  // Function to handle icon selection
+  const selectIcon = (iconId) => {
+    if (selectedIconId !== iconId) {
+      setSelectedIconId(iconId);
+    } else {
+      setSelectedIconId(null); // Deselect if the same icon is clicked again
+    }
+  };
+
+
   return (
     <div className="home">
       {isPending &&
@@ -84,7 +96,7 @@ const Home = () => {
             <BrowserView key={1}>
               {/* Recycling bin application */}
               <div onDoubleClick={() => handleDoubleClick('recycleBin')} id='button'>
-                <Icon key={0} id={0} icon='recycle' text="Recycle Bin" left={-10} top={10} />
+                <Icon key={0} id={0} icon='recycle' text="Recycle Bin" left={-10} top={10} isSelected={selectedIconId === 0} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.recycleBin}
@@ -126,7 +138,7 @@ const Home = () => {
 
               {/* Resume application */}
               <div onDoubleClick={() => handleDoubleClick('resume')} id='button'>
-                <Icon key={1} id={1} icon='resume' text="Resume" left={90} top={10} />
+                <Icon key={1} id={1} icon='resume' text="Resume" left={90} top={10} isSelected={selectedIconId === 1} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.resume}
@@ -155,7 +167,7 @@ const Home = () => {
 
               {/* Folder application */}
               <div onDoubleClick={() => handleDoubleClick('folder')} id='button'>
-                <Icon key={2} id={2} icon='folder' text="My Documents" left={-10} top={110} />
+                <Icon key={2} id={2} icon='folder' text="My Documents" left={-10} top={110} isSelected={selectedIconId === 2} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.folder}
@@ -203,7 +215,7 @@ const Home = () => {
 
               {/* Internet Explorer application */}
               <div onDoubleClick={() => handleDoubleClick('explorer')} id='button'>
-                <Icon key={2} id={2} icon='explorer' text="Internet Explorer" left={-10} top={210} />
+                <Icon key={6} id={6} icon='explorer' text="Internet Explorer" left={-10} top={210} isSelected={selectedIconId === 6} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.explorer}
@@ -231,7 +243,7 @@ const Home = () => {
 
               {/* Tic Tac Toe application */}
               <div onDoubleClick={() => handleDoubleClick('tictactoe')} id='button'>
-                <Icon key={3} id={3} icon='tictactoe' text="Tic Tac Toe" left={90} top={210} />
+                <Icon key={3} id={3} icon='tictactoe' text="Tic Tac Toe" left={90} top={210} isSelected={selectedIconId === 3} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.tictactoe}
@@ -259,7 +271,7 @@ const Home = () => {
 
               {/* Minesweeper application */}
               <div onDoubleClick={() => handleDoubleClick('minesweeper')} id='button'>
-                <Icon key={4} id={4} icon='minesweeper' text="Minesweeper" left={90} top={310} />
+                <Icon key={4} id={4} icon='minesweeper' text="Minesweeper" left={90} top={310} isSelected={selectedIconId === 4} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.minesweeper}
@@ -286,7 +298,7 @@ const Home = () => {
 
               {/* Music application */}
               <div onDoubleClick={() => handleDoubleClick('music')} id='button'>
-                <Icon key={5} id={5} icon='music' text="Music" left={-10} top={410} />
+                <Icon key={5} id={5} icon='music' text="Music" left={-10} top={410} isSelected={selectedIconId === 5} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.music}
@@ -314,7 +326,7 @@ const Home = () => {
 
               {/* Neighborhood Network application */}
               <div onDoubleClick={() => handleDoubleClick('linkedin')} id='button'>
-                <Icon key={7} id={7} icon='linkedin' text="Network Neighborhood" left={90} top={110} />
+                <Icon key={7} id={7} icon='linkedin' text="Network Neighborhood" left={90} top={110} isSelected={selectedIconId === 7} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.linkedin}
@@ -350,7 +362,7 @@ const Home = () => {
 
               {/* Outlook Express application */}
               <div onDoubleClick={() => handleDoubleClick('email')} id='button'>
-                <Icon key={8} id={8} icon='email' text="Outlook Express" left={-10} top={310} />
+                <Icon key={8} id={8} icon='email' text="Outlook Express" left={-10} top={310} isSelected={selectedIconId === 8} onSelect={selectIcon} />
               </div>
               <Popup
                 open={popupsOpen.email}
