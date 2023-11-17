@@ -10,7 +10,7 @@ import resume from './icons/rs.pdf'
 import TicTacToe from './TicTacToe.jsx'
 import Draggable from 'react-draggable';
 import lolLogo from './icons/League_of_Legends.png';
-
+import soundFile from './assets/startup.mp3';
 
 
 const Home = () => {
@@ -19,10 +19,14 @@ const Home = () => {
   const [isreveal, setIsReveal] = useState(false);
   useEffect(() => {
 
+    const sound = new Audio(soundFile);
+
     setTimeout(() => {
       setIsPending(false);
       setIsReveal(true);
 
+      sound.play();
+      console.log('sound played');
     }, 5000);
 
     const script = document.createElement('script');
@@ -38,6 +42,10 @@ const Home = () => {
       console.error("Error loading LinkedIn script");
     };
     document.body.appendChild(script);
+
+    //cleanup to clear the timeout if the component is unmounted before the timeout is reached
+    return () => clearTimeout();
+
   }, [])
 
   const clicker = () => {
@@ -305,24 +313,45 @@ const Home = () => {
                 onClose={() => closePopup('music')}
                 modal
               >
-
                 {close => (
+                  // <Draggable>
+                  //   <div className="modal music-player-modal">
+                  //     <div className="header">
+                  //       <button className="close" onClick={close}>
+                  //         &times;
+                  //       </button>
+                  //       <span className="header-title">The Microsoft Sound.wav - Windows Media Player</span>
+                  //     </div>
+                  //     <div className="content">
+                  //       <div className="music-player-info">
+                  //         Show: <br />
+                  //         Clip: <br />
+                  //         Author: <br />
+                  //         Copyright: 1998 Microsoft Corporation
+                  //       </div>
+                  //       <div className="music-player-status">
+                  //         Paused 00:02 / 00:07
+                  //       </div>
+                  //     </div>
+                  //   </div>
+                  // </Draggable>
                   <Draggable>
-                    <div className="modal">
-                      <div className="header">
-                        <button className="close" onClick={close}>
-                          &times;
-                        </button>
-                      </div>
-                      <div className="content">
-                        Coming soon!
-                      </div>
+                  <div className="modal">
+                    <div className="header">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
                     </div>
-
-                  </Draggable>
+                    <div className="content">
+                      Coming soon!
+                    </div>
+                  </div>
+                </Draggable>
                 )}
-
               </Popup>
+
+
+
 
               {/* Neighborhood Network application */}
               <div onDoubleClick={() => handleDoubleClick('linkedin')} id='button'>
@@ -381,6 +410,7 @@ const Home = () => {
                       <div className="content">
                         <h2>Contact Me</h2>
                         <p>Thank you for reaching out! If you decide to send me an email, please know that I value your message and will make it a priority to get back to you as soon as possible. I appreciate your patience and look forward to connecting with you.</p>
+                        <a href="mailto:nalyd.putra@gmail.com?subject=Hello&body=Thanks%20for%20visiting!" target="_blank" rel="noopener noreferrer">Send Email</a>
                       </div>
                     </div>
 

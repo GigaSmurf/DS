@@ -1,0 +1,229 @@
+@font-face {
+    font-family: 'W95';
+    src: url('../W95FA.otf') format('opentype');
+}
+
+
+.login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #008080;
+    /* Teal background */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #c0c0c0;
+    border: 2px solid #000;
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    box-shadow: none;
+    width: 500px;
+    /* Adjust width as necessary */
+    padding: 2px;
+}
+
+.login-header {
+    background-color: #000080;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.login-body {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.key-icon img {
+    height: 55px;
+    /* Adjust the size of the key icon as necessary */
+    margin-right: 10px;
+    padding-bottom: 50px;
+}
+
+.credentials {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.credentials p {
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    margin: 0;
+    /* Remove margins for alignment */
+    font-size: 14px;
+}
+
+.credentials label {
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.credentials input {
+    padding: 4px;
+    margin-bottom: 8px;
+}
+
+.login-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.login-footer button {
+    margin-top: 4px;
+    width: 75px;
+    /* Allow the buttons to size themselves */
+    margin-left: 5px;
+}
+
+.login-footer button:first-child {
+    margin-top: 0;
+}
+
+.login-error {
+    color: red;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.credentials {
+    display: flex;
+    flex-direction: row;
+    /* Align label and input in a row */
+    align-items: center;
+    /* Center items vertically */
+    justify-content: flex-start;
+    /* Align items to the start of the flex container */
+    flex-wrap: wrap;
+    /* Wrap onto the next line if space is insufficient */
+}
+
+.credentials label {
+    margin-right: 10px;
+    /* Space between label and input */
+    white-space: nowrap;
+    /* Prevent label from wrapping */
+}
+
+.credentials input {
+    padding: 6px;
+    /* Padding inside input fields */
+    margin-bottom: 8px;
+    /* Space below each input field */
+    border: 1px solid #000;
+    /* Border to match the Windows style */
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    width: 188px;
+}
+
+.credentials input:nth-of-type(2) {
+    margin-left: 3.5px;
+}
+
+@media (max-width: 465px) {
+    .credentials input {
+        width: 200px;
+    }
+
+    .credentials input:nth-of-type(2) {
+        margin-left: 0px;
+    }
+}
+
+/* .credentials input {
+    padding: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #000;
+
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    width: 200px;
+} */
+
+.login-footer {
+    margin-left: 0px;
+}
+
+.login-footer button {
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: 5px 15px;
+    /* Adjust padding to match the classic style */
+    margin-bottom: 2px;
+    /* Add margin between buttons */
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    /* Set the font size of the buttons */
+}
+
+.login-footer button:hover {
+    background-color: #a0a0a0;
+    /* Change background color on hover */
+}
+
+
+.help-button,
+.close-button {
+    /* Shared styles */
+    display: flex;
+    /* Change display to inline-block */
+    background-color: #c0c0c0;
+    border: 2px outset #ffffff;
+    padding: .5px;
+    /* Adjust the padding to your preference */
+    cursor: pointer;
+    font-family: 'W95', 'MS Sans Serif', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    user-select: none;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-button:hover,
+.close-button:hover {
+    background-color: #a0a0a0;
+}
+
+.help-button {
+    margin-right: 0px;
+    /* Space between '?' and 'X' */
+    color: black;
+    /* Assuming you want black text for '?' */
+}
+
+.close-button {
+    color: black;
+}
+
+
+
+.login-header .help-button,
+.login-header .close-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.login-header .help-button {
+    right: 30px;
+    /* Position the '?' to the left of 'X', adjust as needed */
+}
+
+.login-header .close-button {
+    right: 3px;
+    /* Keep 'X' on the far right */
+}
