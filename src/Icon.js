@@ -8,6 +8,8 @@ import email from './icons/email.png';
 import tictactoe from './icons/tictactoe.png';
 import minesweeper from './icons/minesweeper.png';
 import music from './icons/cdaudio.png';
+import mobile from './icons/mobile.png';
+
 import Draggable from 'react-draggable';
 export class Icon extends Component {
 
@@ -59,6 +61,9 @@ export class Icon extends Component {
                 break;
             case 'music':
                 img = <img src={music} alt="Music" className='style' />;
+                break;
+            case 'mobile':
+                img = <img src={mobile} alt="Mobile" className='style' />;
                 break;
             default:
                 img = <img src={folder} alt="Icon img" />;

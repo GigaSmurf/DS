@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, Suspense, forwardRef, useMemo } from 'react';
 import './css/intro.css'
 import './css/taskbar.css'
 import Sticky from "./sticky";
-import { BrowserView, MobileView } from "react-device-detect";
+import { BrowserView, MobileView, isMobile } from "react-device-detect";
 import Taskbar from './TaskBar';
 import { Icon } from './Icon';
 import Popup from 'reactjs-popup';
@@ -13,21 +13,347 @@ import lolLogo from './icons/League_of_Legends.png';
 import soundFile from './assets/startup.mp3';
 
 
+//Mobile View
+import { Canvas } from '@react-three/fiber';
+// import { OrbitControls, Stars, useGLTF, Stage, PresentationControls } from "@react-three/drei";
+import { Physics, useBox } from "@react-three/cannon";
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useLoader } from '@react-three/fiber';
+import './css/mobileview.css';
+import { Text } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
+// const tmpPos = new THREE.Vector3();
+import { MeshBasicMaterial } from 'three';
+
+import { Line } from '@react-three/drei';
+
+import matrixCodeFontUrl from './assets/Matrix-Code.ttf';
+import PlaneCanvas from './PlaneCanvas';
+import CanvasAnimation from './CanvasAnimation';
+
+
+const tempVector = new THREE.Vector3();
+const textOptions = [
+  '0', '1', '*', 'λ', '∑', 'エ',
+  '*', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', '<', '>', 'z', '|', '¦', '©', '╌', '▪', 'ア', 'ウ', 'エ', 'オ',
+  'モ', 'エ', 'ヤ', 'キ', 'オ', 'カ', '7', 'ケ', 'サ', 'ス', 'z', '1', '5', '2', 'ヨ', 'タ', 'ワ', '4', 'ネ', 'ヌ', 'ナ', '9', '8', 'ヒ', '0', 'ホ', 'ア', '3', 'ウ', 'セ', '¦', ':', '꞊', 'ミ', 'ラ', 'リ', '╌', 'ツ', 'テ', 'ニ', 'ハ', 'ソ', '▪', '—', '<', '>', '0', '|', '+', '*', 'コ', 'シ', 'マ', 'ム', 'メ'
+];
+
+const FallingText = ({ text, position, velocityY }) => {
+  const [ref, api] = useBox(() => ({
+    mass: 1,
+    position,
+    velocity: [0, velocityY, 0]
+  }));
+  const [currentText, setCurrentText] = useState(text);
+  const [opacity, setOpacity] = useState(1);
+  const [color, setColor] = useState('green');
+
+  let computedColor = color;
+
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.getWorldPosition(tempVector);
+      // setCurrentText(textOptions[Math.floor(Math.random() * textOptions.length)]);
+      // Change text at random intervals
+      if (Math.random() < 0.05) {
+        const newText = textOptions[Math.floor(Math.random() * textOptions.length)];
+        ref.current.children[0].text = newText;
+      }
+      if (tempVector.y < -20) {
+        api.position.set(position[0], 25, position[2]);
+        api.velocity.set(0, velocityY, 0);
+        setOpacity(1);
+      }
+      // computedColor = ref.current.position.y < 0 ? 'white' : color;
+      // Set the text to white and fully opaque at the bottom
+      if (tempVector.y <= 0) {
+        setColor('#39FF14');
+        setOpacity(1.0);
+      } else {
+        setColor('green');
+        // Reduce opacity as the text moves up, creating a fading tail
+        const fadeStart = 5;
+        const fadeEnd = 25;
+        if (tempVector.y > fadeStart && tempVector.y < fadeEnd) {
+          const fadeAmount = (tempVector.y - fadeStart) / (fadeEnd - fadeStart);
+          setOpacity(1.0 - fadeAmount);
+        }
+      }
+    }
+  });
+
+  return (
+    <mesh ref={ref}>
+      <Text
+        font={matrixCodeFontUrl}
+        fontSize={1}
+        color={color}
+        anchorX="center"
+        anchorY="middle"
+        material={new MeshBasicMaterial({
+          color: color,
+          // emissive: color,
+          transparent: true,
+          opacity: opacity
+        })}
+      >
+        {text}
+      </Text>
+    </mesh>
+  );
+};
+
+const Scene = () => {
+  const numColumns = 20; // Number of columns of falling text
+  const numRows = 15; // Number of rows in each column
+  const spacingX = 1.5; // Horizontal spacing between columns
+  const spacingY = 1.5; // Vertical spacing between texts in a column
+
+  // Create positions for each text in a grid
+  const texts = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < numColumns; i++) {
+      for (let j = 0; j < numRows; j++) {
+        temp.push({
+          text: textOptions[Math.floor(Math.random() * textOptions.length)],
+          position: [
+            i * spacingX - (numColumns * spacingX) / 2, // Align in columns
+            20 + j * spacingY, // Stagger the starting positions vertically
+            0
+          ],
+          velocityY: -2 - Math.random() * 1, // Slightly randomize falling speed
+        });
+      }
+    }
+    return temp;
+  }, [numColumns, numRows, spacingX, spacingY]);
+
+  return (
+    <>
+      {texts.map((props, i) => (
+        <FallingText key={i} {...props} />
+      ))}
+    </>
+  );
+};
+
+const MatrixRain = () => {
+  return (
+    <Canvas shadows camera={{ position: [0, 0, 15], fov: 111 }}>
+      {/* <OrbitControls/> */}
+      <ambientLight />
+      {/* <Stars/> */}
+      <pointLight position={[10, 10, 10]} />
+      <Physics gravity={[0, -1, 0]}>
+        <Scene />
+      </Physics>
+    </Canvas>
+  );
+};
+
+
+// function Plane() {
+//   const [ref] = usePlane(() => ({
+//     rotation: [-Math.PI / 2, 0, 0],
+//   }));
+//   return (
+//     <mesh ref={ref} rotation={[-Math.PI / 2, 0, 0]}>
+//       <planeBufferGeometry attach="geometry" args={[1000, 200]} />
+//       <meshLambertMaterial attach="material" color="lightblue" />
+//     </mesh>
+//   );
+// }
+
+function Box() {
+  const meshRef = useRef();
+  const materialRef = useRef();
+
+  useFrame(({ clock }) => {
+    const elapsedTime = clock.getElapsedTime();
+
+    // Flash the cube
+    let g = materialRef.current.color.g;
+    g -= 0.05;
+    if (g <= 0) g = 1.0;
+    materialRef.current.color.g = g;
+    meshRef.current.rotation.x = meshRef.current.rotation.y += 0.01;
+  });
+
+  return (
+    <mesh ref={meshRef} position={[0, 0.5, 0]}>
+      <boxBufferGeometry args={[1, 1, 1]} />
+      <meshBasicMaterial ref={materialRef} color={0x00ff00} wireframe />
+    </mesh>
+  );
+}
+// A component to render interconnected nodes
+const Nodes = ({ count = 50 }) => {
+  const nodes = useMemo(() => {
+    const temp = [];
+    for (let i = 0; i < count; i++) {
+      const x = Math.random() * 400 - 200;
+      const y = Math.random() * 400 - 200;
+      const z = Math.random() * 400 - 200;
+      temp.push(new THREE.Vector3(x, y, z));
+    }
+    return temp;
+  }, [count]);
+
+  return (
+    <>
+      {nodes.map((node, index) => (
+        <Line key={index} points={[node, new THREE.Vector3(0, 0, 0)]} color="lime" linewidth={2} />
+      ))}
+    </>
+  );
+};
+
+
+
+// const SuspenseTrigger = () => {
+//   throw new Promise(() => { });
+// };
+
+// function CarCamera({ carRef }) {
+//   const { camera } = useThree();
+
+//   useFrame(() => {
+//     if (carRef.current) {
+//       const carPosition = carRef.current.position;
+//       console.log("Car position:", carPosition); // Log the car's position
+
+//       // Update camera position
+//       camera.position.set(carPosition.x - 50, carPosition.y + 70, carPosition.z + 50);
+//       camera.lookAt(carPosition.x, carPosition.y, carPosition.z);
+//     }
+//   });
+
+//   return null;
+// }
+
+// Model component to load and display the 3D model
+// function Model(props, ref) {
+//   const { scene } = useGLTF("/nissan_skyline_r34_gt-r.glb");
+//   return <primitive object={scene} ref={ref} {...props} />;
+// }
+
+// function Planet({ position, color, size }) {
+//   return (
+//     <mesh position={position}>
+//       <sphereBufferGeometry attach="geometry" args={[size, 32, 32]} />
+//       <meshStandardMaterial attach="material" color={color} />
+//     </mesh>
+//   );
+// }
+
+
+// Function to create wheels
+// function createWheels() {
+//   const geometry = new THREE.BoxBufferGeometry(12, 12, 33);
+//   const material = new THREE.MeshLambertMaterial({ color: 0x333333 });
+//   return <mesh geometry={geometry} material={material} />;
+// }
+// function Building({ position, onClick }) {
+//   // Define the building component
+//   return (
+//     <mesh position={position} onClick={onClick}>
+//       <boxBufferGeometry attach="geometry" args={[10, 30, 10]} />
+//       <meshStandardMaterial attach="material" color="grey" />
+//     </mesh>
+//   );
+// }
+// function Car(props, ref) {
+//   const [carRef, api] = useBox(() => ({
+//     mass: 1,
+//     position: [0, 0.5, 0]
+//   }), ref);
+
+//   // const [isLoading, setIsLoading] = useState(true);
+//   // const gltf = useLoader(GLTFLoader, "/nissan_skyline_r34_gt-r.glb", () => {
+//   //   setIsLoading(false);
+//   // });
+
+//   let angle = 0;
+//   const radius = 30;
+//   const speed = 0.05; // Adjust the speed as needed
+
+//   useFrame(() => {
+//     angle += speed;
+//     const x = radius * Math.cos(angle);
+//     const z = radius * Math.sin(angle);
+
+//     // Update position
+//     carRef.current.position.set(x, 0.5, z);
+//     if (api.position) {
+//       api.position.set(x, 0.5, z);
+//     }
+
+//     // Update rotation to face the direction of movement
+//     const tangentAngle = angle + Math.PI / 2;
+//     carRef.current.rotation.y = tangentAngle;
+//   });
+
+//   return (
+//     // <Model
+//     //   ref={carRef}
+//     //   scale={[0.5, 0.5, 0.5]} // Adjust the scale as needed
+//     //   position={[0, 0.5, 0]}
+//     // />
+//     // <mesh ref={carRef}>
+//     //   <boxBufferGeometry attach="geometry" args={[1, 0.5, 2]} />
+//     //   <meshStandardMaterial attach="material" color="red" />
+//     // </mesh>
+//     <group ref={carRef}>
+//       {/* Back wheel */}
+//       <group position={[-18, 6, 0]}>
+//         {createWheels()}
+//       </group>
+
+//       {/* Front wheel */}
+//       <group position={[18, 6, 0]}>
+//         {createWheels()}
+//       </group>
+
+//       {/* Main body */}
+//       <mesh position={[0, 12, 0]} geometry={new THREE.BoxBufferGeometry(60, 15, 30)} material={new THREE.MeshLambertMaterial({ color: 0x78b14b })} />
+
+//       {/* Cabin */}
+//       <mesh position={[-6, 25.5, 0]} geometry={new THREE.BoxBufferGeometry(33, 12, 24)} material={new THREE.MeshLambertMaterial({ color: 0xffffff })} />
+//     </group>
+//   );
+// }
+
+// const CarWithRef = forwardRef(Car);
+
 const Home = () => {
   // const index = 0
   const [isPending, setIsPending] = useState(true);
   const [isreveal, setIsReveal] = useState(false);
+
+
+
   useEffect(() => {
 
     const sound = new Audio(soundFile);
 
-    setTimeout(() => {
-      setIsPending(false);
-      setIsReveal(true);
+    // setTimeout(() => {
+    //   setIsPending(false);
+    //   setIsReveal(true);
 
+    //   if (!isMobile) {
+    //     sound.play();
+    //   }
+    //   console.log('sound played');
+    // }, 5000);
+
+    setIsPending(false);
+    setIsReveal(true);
+
+    if (!isMobile) {
       sound.play();
-      console.log('sound played');
-    }, 5000);
+    }
 
     const script = document.createElement('script');
     script.src = "https://platform.linkedin.com/badges/js/profile.js";
@@ -63,6 +389,7 @@ const Home = () => {
     music: false,
     linkedin: false,
     email: false,
+    mobile: false,
   });
 
   // Generalized function to handle double click event for all popups
@@ -88,6 +415,56 @@ const Home = () => {
     }
   };
 
+
+  //---------------
+  // const carRef = useRef();
+  // const spaceshipRef = useRef();
+
+
+  // const gltf = useLoader(GLTFLoader, './nissan_skyline_r34_gt-r.glb');
+
+  // New state variables for controlling the car
+  // const [moveForward, setMoveForward] = useState(false);
+  // const [turnDirection, setTurnDirection] = useState(0); // -1 for left, 1 for right, 0 for straight
+  // // Handlers for button presses
+  // const handleMoveForward = () => setMoveForward(!moveForward);
+  // const handleTurnLeft = () => setTurnDirection(-1);
+  // const handleTurnRight = () => setTurnDirection(1);
+  // const handleStopTurning = () => setTurnDirection(0);
+  const [currentCanvas, setCurrentCanvas] = useState('MatrixRain');
+  const [showButton, setShowButton] = useState(false); // State to show/hide transition button
+  const [showMessageContainer, setShowMessageContainer] = useState(true);
+
+  useEffect(() => {
+    
+    const timer = setTimeout(() => {
+      setShowButton(true);
+    }, 13000);
+
+    console.log("Timer finished")
+    return () => clearTimeout(timer); // Clear timeout if the component unmounts
+  }, []);
+
+  const handleCanvasChange = () => {
+    setCurrentCanvas('CanvasAnimation');
+    setShowMessageContainer(false);
+    setTimeout(() => {
+      setCurrentCanvas('PlaneCanvas');
+    }, 3500); // Duration for CanvasAnimation
+  };
+
+  const renderCanvas = () => {
+    switch (currentCanvas) {
+      case 'MatrixRain':
+        return <MatrixRain />;
+      case 'PlaneCanvas':
+        return <PlaneCanvas />;
+      case 'CanvasAnimation':
+        return <CanvasAnimation width={window.innerWidth} height={window.innerHeight} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="home">
@@ -289,17 +666,17 @@ const Home = () => {
 
                 {close => (
                   <Draggable>
-                    <div className="modal">
-                      <div className="header">
-                        <button className="close" onClick={close}>
-                          &times;
-                        </button>
-                      </div>
-                      <div className="content">
-                        Coming soon!
-                      </div>
+                  <div className="modal">
+                    <div className="header">
+                      <button className="close" onClick={close}>
+                        &times;
+                      </button>
                     </div>
-                  </Draggable>
+                    <div className="content">
+                      Coming soon!
+                    </div>
+                  </div>
+                </Draggable>
                 )}
 
               </Popup>
@@ -336,6 +713,32 @@ const Home = () => {
                   //   </div>
                   // </Draggable>
                   <Draggable>
+                    <div className="modal">
+                      <div className="header">
+                        <button className="close" onClick={close}>
+                          &times;
+                        </button>
+                      </div>
+                      <div className="content">
+                        Coming soon!
+                      </div>
+                    </div>
+                  </Draggable>
+                )}
+              </Popup>
+
+              {/* Mobile application */}
+              <div onDoubleClick={() => handleDoubleClick('mobile')} id='button'>
+                <Icon key={10} id={10} icon='mobile' text="Mobile Version" left={90} top={410} isSelected={selectedIconId === 10} onSelect={selectIcon} />
+              </div>
+              <Popup
+                open={popupsOpen.mobile}
+                onClose={() => closePopup('mobile')}
+                modal
+              >
+
+                {close => (
+                  // <Draggable>
                   <div className="modal">
                     <div className="header">
                       <button className="close" onClick={close}>
@@ -343,15 +746,41 @@ const Home = () => {
                       </button>
                     </div>
                     <div className="content">
-                      Coming soon!
+                      <Suspense>
+                        <div className="canvas-container">
+
+                          <Suspense fallback={<div>Loading the scene...</div>}>
+                            {/* <MatrixRain /> */}
+                            {renderCanvas()}
+                          </Suspense>
+                          {/* <div className="control-buttons">
+                  <button onClick={handleMoveForward}>Accelerate</button>
+                  <button onTouchStart={handleTurnLeft} onTouchEnd={handleStopTurning}>Left</button>
+                  <button onTouchStart={handleTurnRight} onTouchEnd={handleStopTurning}>Right</button>
+                </div> */}
+
+                          {showMessageContainer && (
+                            <div className="message-container matrix-text-effect">
+                              {/* Your messages */}
+                              <p className="typing-first">Wake up...</p>
+                              <p className="typing-second">The Matrix has you...</p>
+                              <p className="typing-third">Follow Dylan...</p>
+                              <p className="typing-fourth">...the Software Dev.</p>
+
+                              {showButton && (
+                                <button onClick={handleCanvasChange} className='matrix-button'>Escape</button>
+                              )}
+                            </div>
+                          )}
+
+                        </div>
+                      </Suspense>
                     </div>
                   </div>
-                </Draggable>
+                  // </Draggable>
                 )}
+
               </Popup>
-
-
-
 
               {/* Neighborhood Network application */}
               <div onDoubleClick={() => handleDoubleClick('linkedin')} id='button'>
@@ -428,9 +857,35 @@ const Home = () => {
 
 
             <MobileView key={2}>
-              <div className="mainContent" id="mainContainer">
-                <h1>computer required :(</h1>
-              </div>
+              <Suspense>
+                <div className="canvas-container">
+
+                  <Suspense fallback={<div>Loading the scene...</div>}>
+                    {/* <MatrixRain /> */}
+                    {renderCanvas()}
+                  </Suspense>
+                  {/* <div className="control-buttons">
+                  <button onClick={handleMoveForward}>Accelerate</button>
+                  <button onTouchStart={handleTurnLeft} onTouchEnd={handleStopTurning}>Left</button>
+                  <button onTouchStart={handleTurnRight} onTouchEnd={handleStopTurning}>Right</button>
+                </div> */}
+
+                  {showMessageContainer && (
+                    <div className="message-container matrix-text-effect">
+                      {/* Your messages */}
+                      <p className="typing-first">Wake up...</p>
+                      <p className="typing-second">The Matrix has you...</p>
+                      <p className="typing-third">Follow Dylan...</p>
+                      <p className="typing-fourth">...the Software Dev.</p>
+
+                      {showButton && (
+                        <button onClick={handleCanvasChange} className='matrix-button'>Escape</button>
+                      )}
+                    </div>
+                  )}
+
+                </div>
+              </Suspense>
             </MobileView>
 
           </>

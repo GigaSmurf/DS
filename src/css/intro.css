@@ -22,7 +22,7 @@
 
 .typing {
   width: 16ch;
-  animation: typing 4s steps(27), blink .5s step-end infinite alternate;
+  animation: typing 3s steps(20), blink .5s step-end infinite alternate;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid;
