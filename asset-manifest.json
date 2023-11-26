@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.e5cbb04d.css",
-    "main.js": "/static/js/main.e0f06883.js",
+    "main.css": "/static/css/main.b88ef451.css",
+    "main.js": "/static/js/main.c58fba21.js",
     "static/js/787.2942b879.chunk.js": "/static/js/787.2942b879.chunk.js",
     "static/media/windows_98_remastered_startup.jpeg": "/static/media/windows_98_remastered_startup.81686c289d299810628e.jpeg",
     "static/media/micross.ttf": "/static/media/micross.bc63bb3f66faffe6af57.ttf",
@@ -15,12 +15,12 @@
     "static/media/github.png": "/static/media/github.9d51602084e0e7d12b33.png",
     "static/media/Matrix-Code.ttf": "/static/media/Matrix-Code.a2e5d60994f6bae5be3a.ttf",
     "index.html": "/index.html",
-    "main.e5cbb04d.css.map": "/static/css/main.e5cbb04d.css.map",
-    "main.e0f06883.js.map": "/static/js/main.e0f06883.js.map",
+    "main.b88ef451.css.map": "/static/css/main.b88ef451.css.map",
+    "main.c58fba21.js.map": "/static/js/main.c58fba21.js.map",
     "787.2942b879.chunk.js.map": "/static/js/787.2942b879.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5cbb04d.css",
-    "static/js/main.e0f06883.js"
+    "static/css/main.b88ef451.css",
+    "static/js/main.c58fba21.js"
   ]
 }
