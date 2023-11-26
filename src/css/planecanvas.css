@@ -1,64 +1,168 @@
 .instructions {
-    position: absolute;
-    bottom: 20px; /* Position from the bottom of the screen */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Align center */
-    z-index: 1000; /* High z-index to ensure visibility */
-  
-    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    border: 1px solid #0f0; /* Matrix-green border */
-    padding: 20px; /* Padding inside the box */
-    color: #0f0; /* Matrix-green text color */
-    font-family: 'Courier New', monospace; /* Monospaced font for the Matrix effect */
-    text-align: center; /* Center the text inside the div */
-    max-width: 80%; /* Maximum width of the instructions box */
-    box-sizing: border-box; /* Include padding and border in the width */
-    border-radius: 5px; /* Slightly rounded corners for aesthetics */
-  }
-  
-  .instructions p {
-    margin: 0 0 10px; /* Spacing between the paragraph and the button */
-  }
-  
-  .instructions button {
-    background-color: #111; /* Dark background for the button */
-    border: 1px solid #0f0; /* Matrix-green border for the button */
-    color: #0f0; /* Matrix-green text color for the button */
-    padding: 10px 20px; /* Padding inside the button */
-    cursor: pointer; /* Change mouse cursor to indicate the button is clickable */
-    text-transform: uppercase; /* Uppercase text for the button */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-  }
-  
-  .instructions button:hover {
-    background-color: #0f0; /* Matrix-green background color on hover */
-    color: #111; /* Dark text color on hover */
-  }
-  
-#linkedin-button, #github-button {
-    padding: 10px;
-    border: none;
-    outline: none;
-    background: transparent;
-    cursor: pointer;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    border-radius: 5px;
-    margin-right: 5px; /* Add margin if you want space between buttons */
+  position: absolute;
+  bottom: 20px;
+  /* Position from the bottom of the screen */
+  left: 50%;
+  /* Center horizontally */
+  transform: translateX(-50%);
+  /* Align center */
+  z-index: 1000;
+  /* High z-index to ensure visibility */
+
+  background: rgba(0, 0, 0, 0.8);
+  /* Semi-transparent background */
+  border: 1px solid #0f0;
+  /* Matrix-green border */
+  padding: 20px;
+  /* Padding inside the box */
+  color: #0f0;
+  /* Matrix-green text color */
+  font-family: 'Courier New', monospace;
+  /* Monospaced font for the Matrix effect */
+  text-align: center;
+  /* Center the text inside the div */
+  max-width: 80%;
+  /* Maximum width of the instructions box */
+  box-sizing: border-box;
+  /* Include padding and border in the width */
+  border-radius: 5px;
+  /* Slightly rounded corners for aesthetics */
+
 }
 
-#linkedin-button img, #github-button img {
-    width: 32px; 
-    height: auto;
+.instructions p {
+  margin: 0 0 5px;
+  /* Spacing between the paragraph and the button */
 }
 
-#linkedin-button:hover, #github-button:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.instructions button {
+  background-color: #111;
+  /* Dark background for the button */
+  border: 1px solid #0f0;
+  /* Matrix-green border for the button */
+  color: #0f0;
+  /* Matrix-green text color for the button */
+  padding: 10px 20px;
+  /* Padding inside the button */
+  cursor: pointer;
+  /* Change mouse cursor to indicate the button is clickable */
+  text-transform: uppercase;
+  /* Uppercase text for the button */
+  transition: background-color 0.3s, color 0.3s;
+  /* Smooth transition for hover effect */
+}
+
+.instructions button:hover {
+  background-color: #0f0;
+  /* Matrix-green background color on hover */
+  color: #111;
+  /* Dark text color on hover */
+}
+
+#linkedin-button,
+#github-button {
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  border-radius: 5px;
+  margin-right: 5px;
+  /* Add margin if you want space between buttons */
+}
+
+#linkedin-button img,
+#github-button img {
+  width: 32px;
+  height: auto;
+}
+
+#linkedin-button:hover,
+#github-button:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 #linkedin-button {
-    box-shadow: 0 0 10px #0077B5; /* LinkedIn Blue */
+  box-shadow: 0 0 10px #0077B5;
+  /* LinkedIn Blue */
 }
 
 #github-button {
-    box-shadow: 0 0 10px #F1502F; /* GitHub Red */
+  box-shadow: 0 0 10px #F1502F;
+  /* GitHub Red */
+}
+
+
+@media screen and (max-width: 600px) {
+  .instructions p {
+    font-size: 0.8em;
+    /* Smaller font size */
+    padding: 10px;
+    bottom: 80px;
+  }
+
+  .instructions button {
+    padding: 5px 10px;
+    /* Smaller padding */
+    margin: 5px;
+    /* Less margin */
+  }
+
+  .menu-toggle-button {
+    bottom: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: .8em;
+  }
+}
+
+@media screen and (max-width: 332px) {
+
+  #linkedin-button img,
+  #github-button img{
+    width: 20px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+
+  #linkedin-button img,
+  #github-button img{
+    width: 15px;
+  }
+}
+
+
+.menu-toggle-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  /* Position to bottom left */
+  background-color: #111;
+  border: 1px solid #0f0;
+  color: #0f0;
+  width: 50px;
+  /* Fixed width for a circle */
+  height: 50px;
+  /* Fixed height for a circle */
+  border-radius: 50%;
+  /* Make it circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  transition: background-color 0.3s, color 0.3s;
+  z-index: 1001;
+  /* Higher than .instructions z-index */
+  text-transform: uppercase;
+  font-size: 1.4em;
+  /* Smaller font size for circle */
+}
+
+.menu-toggle-button:hover {
+  background-color: #0f0;
+  color: #111;
 }

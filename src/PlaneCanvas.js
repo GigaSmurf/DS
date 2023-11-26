@@ -103,10 +103,17 @@ const PlaneCanvas = () => {
         window.open('https://www.linkedin.com/in/dylansyahputra', '_blank');
     }
 
-    const handleGithub = () =>{
+    const handleGithub = () => {
         //https://github.com/GigaSmurf
         window.open('https://github.com/GigaSmurf', '_blank');
     }
+
+    const [showMenu, setShowMenu] = useState(true);
+
+    const toggleMenu = () => {
+        setShowMenu(!showMenu);
+    };
+
 
     return (
         <>
@@ -115,9 +122,12 @@ const PlaneCanvas = () => {
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} />
             </Canvas>
-            {canInteract && (
+            {canInteract && (<button onClick={toggleMenu} className="menu-toggle-button">
+                {showMenu ? '▼' : '?'}
+            </button>)}
+            {canInteract && showMenu && (
                 <div className="instructions">
-                    <p>You can now look around. <br /><br />Get on your computer... and open this website.</p>
+                    <p>You can now look around. <br />Get on your computer... and open this website.</p>
                     <button onClick={handleButtonClick}>
                         No, this is not real
                     </button>
@@ -128,7 +138,7 @@ const PlaneCanvas = () => {
                                     <img src={require("./assets/linkedin.png")} alt="LinkedIn" />
                                 </button>
                                 <button id="github-button" onClick={handleGithub}>
-                                    <img src={require("./assets/github.png")}  alt="GitHub" />
+                                    <img src={require("./assets/github.png")} alt="GitHub" />
                                 </button>
                             </div>
 
