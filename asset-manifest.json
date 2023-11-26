@@ -1,28 +1,26 @@
 {
   "files": {
-    "main.css": "/static/css/main.9d3a3968.chunk.css",
-    "main.js": "/static/js/main.21549062.chunk.js",
-    "main.js.map": "/static/js/main.21549062.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.16b63bd5.js",
-    "runtime-main.js.map": "/static/js/runtime-main.16b63bd5.js.map",
-    "static/js/2.46bec246.chunk.js": "/static/js/2.46bec246.chunk.js",
-    "static/js/2.46bec246.chunk.js.map": "/static/js/2.46bec246.chunk.js.map",
-    "static/js/3.13560545.chunk.js": "/static/js/3.13560545.chunk.js",
-    "static/js/3.13560545.chunk.js.map": "/static/js/3.13560545.chunk.js.map",
+    "main.css": "/static/css/main.e5cbb04d.css",
+    "main.js": "/static/js/main.e0f06883.js",
+    "static/js/787.2942b879.chunk.js": "/static/js/787.2942b879.chunk.js",
+    "static/media/windows_98_remastered_startup.jpeg": "/static/media/windows_98_remastered_startup.81686c289d299810628e.jpeg",
+    "static/media/micross.ttf": "/static/media/micross.bc63bb3f66faffe6af57.ttf",
+    "static/media/energystar.gif": "/static/media/energystar.6046cd52b5cfd812cf27.gif",
+    "static/media/startup.mp3": "/static/media/startup.935898eadb8eee0d8c83.mp3",
+    "static/media/rs.pdf": "/static/media/rs.de8a49f0bdd8f724dd5f.pdf",
+    "static/media/W95FA.otf": "/static/media/W95FA.ad7cea682bb510ac5f4a.otf",
+    "static/media/energystar-mobile.gif": "/static/media/energystar-mobile.b13fe91ec38bb3fdb67c.gif",
+    "static/media/C64_Pro_Mono-STYLE.ttf": "/static/media/C64_Pro_Mono-STYLE.c671b8d8124c3ac41af9.ttf",
+    "static/media/League_of_Legends.png": "/static/media/League_of_Legends.d1ec381094a32e5077b5.png",
+    "static/media/github.png": "/static/media/github.9d51602084e0e7d12b33.png",
+    "static/media/Matrix-Code.ttf": "/static/media/Matrix-Code.a2e5d60994f6bae5be3a.ttf",
     "index.html": "/index.html",
-    "static/css/main.9d3a3968.chunk.css.map": "/static/css/main.9d3a3968.chunk.css.map",
-    "static/js/2.46bec246.chunk.js.LICENSE.txt": "/static/js/2.46bec246.chunk.js.LICENSE.txt",
-    "static/media/sticky.css": "/static/media/C64_Pro_Mono-STYLE.c671b8d8.ttf",
-    "static/media/League_of_Legends.d1ec3810.png": "/static/media/League_of_Legends.d1ec3810.png",
-    "static/media/Login.css": "/static/media/W95FA.ad7cea68.otf",
-    "static/media/intro.css": "/static/media/micross.bc63bb3f.ttf",
-    "static/media/rs.d1bbb103.pdf": "/static/media/rs.d1bbb103.pdf",
-    "static/media/startup.935898ea.mp3": "/static/media/startup.935898ea.mp3"
+    "main.e5cbb04d.css.map": "/static/css/main.e5cbb04d.css.map",
+    "main.e0f06883.js.map": "/static/js/main.e0f06883.js.map",
+    "787.2942b879.chunk.js.map": "/static/js/787.2942b879.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.16b63bd5.js",
-    "static/js/2.46bec246.chunk.js",
-    "static/css/main.9d3a3968.chunk.css",
-    "static/js/main.21549062.chunk.js"
+    "static/css/main.e5cbb04d.css",
+    "static/js/main.e0f06883.js"
   ]
 }
