@@ -11,6 +11,8 @@ import TicTacToe from './TicTacToe.jsx'
 import Draggable from 'react-draggable';
 import lolLogo from './icons/League_of_Legends.png';
 import soundFile from './assets/startup.mp3';
+import MineSweeper from './minesweeper.jsx';
+import Music from './Music.jsx';
 
 
 //Mobile View
@@ -506,7 +508,8 @@ const Home = () => {
                             {/* Other files... */}
 
                             {/* League of Legends file with logo and redirect on click */}
-                            <div className="filer" onClick={() => window.open('https://www.op.gg/summoners/na/Gosu%20Uzi%20GALA', '_blank')}>
+                            {/* https://www.op.gg/summoners/na/Gosu%20Uzi%20GALA */}
+                            <div className="filer" onClick={() => window.open('https://www.op.gg/summoners/na/dylan-carry', '_blank')}>
                               <img src={lolLogo} alt="LoL Logo" width="20px" style={{ marginRight: '5px', verticalAlign: 'middle' }} />
                               League of Legends.exe
                             </div>
@@ -638,7 +641,7 @@ const Home = () => {
 
                 {close => (
                   <Draggable>
-                    <div className="modal">
+                    <div className="modal" style={{width: '100%'}}>
                       <div className="header">
                         <button className="close" onClick={close}>
                           &times;
@@ -666,14 +669,14 @@ const Home = () => {
 
                 {close => (
                   <Draggable>
-                  <div className="modal">
+                  <div className="modal" style={{width: '100%'}}>
                     <div className="header">
                       <button className="close" onClick={close}>
                         &times;
                       </button>
                     </div>
-                    <div className="content">
-                      Coming soon!
+                    <div className="content" >
+                      <MineSweeper/>
                     </div>
                   </div>
                 </Draggable>
@@ -687,40 +690,28 @@ const Home = () => {
               </div>
               <Popup
                 open={popupsOpen.music}
-                onClose={() => closePopup('music')}
+                onClose={() => {
+                  closePopup('music');
+                  // if (audioRef.current) {
+                  //   audioRef.current.pause(); // Or audioRef.current.stop() if you implement a stop function
+                  // }
+                }}
                 modal
               >
                 {close => (
-                  // <Draggable>
-                  //   <div className="modal music-player-modal">
-                  //     <div className="header">
-                  //       <button className="close" onClick={close}>
-                  //         &times;
-                  //       </button>
-                  //       <span className="header-title">The Microsoft Sound.wav - Windows Media Player</span>
-                  //     </div>
-                  //     <div className="content">
-                  //       <div className="music-player-info">
-                  //         Show: <br />
-                  //         Clip: <br />
-                  //         Author: <br />
-                  //         Copyright: 1998 Microsoft Corporation
-                  //       </div>
-                  //       <div className="music-player-status">
-                  //         Paused 00:02 / 00:07
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </Draggable>
                   <Draggable>
-                    <div className="modal">
+                    <div className="modal" style={{width: '100%'}}>
                       <div className="header">
                         <button className="close" onClick={close}>
                           &times;
                         </button>
                       </div>
-                      <div className="content">
-                        Coming soon!
+                      <div className="content" style={{marginRight: 0, paddingRight: 0}}>
+                      <Music onUnmount={() => {
+                        // This function will be called when Music component unmounts
+                        // Handle stopping or pausing the audio here if necessary
+                        // No need to reference audioRef here since it's handled within the Music component
+                      }}/>
                       </div>
                     </div>
                   </Draggable>

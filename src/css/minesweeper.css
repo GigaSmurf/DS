@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'W95';
+    src: url('../W95FA.otf') format('opentype');
+}
+
+.minesweeper-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+    font-family: 'W95';
+}
+
+.minesweeper-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 300px; /* Adjust to fit the Minesweeper board width */
+    padding: 0 10px; /* Ensure some space on the sides */
+}
+
+/* Assuming you have specific divs or spans for mines left and timer */
+.mines-left,
+.timer {
+    flex: 1; /* Allows these elements to take up available space */
+    text-align: center; /* Center the text within its space - adjust as needed */
+    font-size: 15px;
+}
+
+.reset-button {
+    flex-grow: 0; /* Prevent the button from growing */
+    /* Remove absolute positioning if it centers well with flex adjustments */
+    margin-bottom: 10px;
+    background-color: #bdbdbd;
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    border-left: 2px solid #ffffff; /* Lighter left border for 3D effect */
+    border-bottom: 2px solid #7b7b7b; /* Darker bottom border */
+    border-right: 2px solid #7b7b7b; /* Darker right border */
+    cursor: pointer;
+}
+
+/* Center text within the left and right sections explicitly */
+.mines-left { text-align: left; }
+.timer { text-align: right; }
+
+
+
+.minesweeper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.minesweeper-row {
+    display: flex;
+}
+
+.minesweeper-cell {
+    width: 30px;
+    height: 30px;
+    background-color: #bdbdbd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    border-left: 2px solid #ffffff; /* Lighter left border for 3D effect */
+    border-bottom: 2px solid #7b7b7b; /* Darker bottom border */
+    border-right: 2px solid #7b7b7b; /* Darker right border */
+    font-weight: bold;
+    box-sizing: border-box; /* Ensure border thickness is included in width/height */
+}
+
+.minesweeper-cell.revealed {
+    background-color: #d3d3d3;
+    border: 2px solid #7b7b7b; /* Keep border thickness consistent to maintain size */
+    color: black; /* Default text color, adjust if needed */
+}
+
+button {
+    margin-top: 20px;
+}
+
+/* Number colors */
+.minesweeper-cell .number-1 { color: #0000FF; }
+.minesweeper-cell .number-2 { color: #007B00; }
+.minesweeper-cell .number-3 { color: #FF0000; }
+.minesweeper-cell .number-4 { color: #00007B; }
+.minesweeper-cell .number-5 { color: #8B4513; } /* Example color for number 5 */
+/* Add more colors for numbers 6, 7, 8 as needed */
+
+.minesweeper-cell .bomb {
+    color: black;
+}
+
+/* Ensure flags and bombs are visible */
+.minesweeper-cell.flag,
+.minesweeper-cell .bomb {
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Adjust size as needed */
+}

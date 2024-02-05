@@ -14,14 +14,14 @@ body {
     justify-content: center; /* Center the game board and info */
     align-items: center; /* Align items vertically */
     height: 60vh; /* Use the full height of the viewport */
-    background: #C0C0C0; /* Classic Windows 98 desktop color */
-    font-family: 'MS Sans Serif', sans-serif;
+    font-family: 'W95';
+    margin-left: 100px;
   }
   
   .game-board {
     width: 240px; /* Fixed width for the board */
     padding: 10px;
-    background: #fff;
+    background: #bdbdbd;
     border: 2px outset #000; /* 3D effect */
   }
   
@@ -44,8 +44,8 @@ body {
     font-size: 20px;
     font-weight: bold;
     color: #000;
-    background: teal;
-    /* Windows 98 taskbar color */
+    background: #010480;
+    color: white;
     padding: 2px 5px;
 }
 
@@ -57,9 +57,13 @@ body {
     font-weight: bold;
     line-height: 60px;
     text-align: center;
-    background: #f4f4f4;
-    border: 2px outset #fff;
-    /* 3D effect */
+    background-color: #bdbdbd;
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    border-left: 2px solid #ffffff; /* Lighter left border for 3D effect */
+    border-bottom: 2px solid #7b7b7b; /* Darker bottom border */
+    border-right: 2px solid #7b7b7b; /* Darker right border */
+    box-sizing: border-box; /* Ensure border thickness is included in width/height */
+    cursor: pointer;
     color: #000;
 }
 
@@ -70,11 +74,13 @@ body {
 /* Colors for X and O */
 .square.x {
     color: #d14545;
+    font-family: 'W95';
     
 }
 
 .square.o {
     color: #4578d1;
+    font-family: 'W95';
 
 }
 
@@ -85,15 +91,20 @@ body {
 
 .game-info li {
     list-style-type: none;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
 }
 
 .game-info button {
-    background: #f4f4f4;
-    border: 2px outset #fff;
+    background-color: #bdbdbd;
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    border-left: 2px solid #ffffff; /* Lighter left border for 3D effect */
+    border-bottom: 2px solid #7b7b7b; /* Darker bottom border */
+    border-right: 2px solid #7b7b7b; /* Darker right border */
+    box-sizing: border-box; /* Ensure border thickness is included in width/height */
     /* 3D effect */
     padding: 5px 10px;
     cursor: pointer;
+    font-family: 'W95';
 }
 
 .game-info button:hover {
@@ -102,13 +113,14 @@ body {
 
 /* Windows 98 title bar */
 .title-bar {
-    background: teal;
+    background: #010480;
     /* Windows 98 taskbar color */
     color: white;
     padding: 2px 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'W95';
 }
 
 .title-bar-text {

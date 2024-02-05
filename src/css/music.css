@@ -1,0 +1,127 @@
+@font-face {
+    font-family: 'W95';
+    src: url('../W95FA.otf') format('opentype');
+}
+
+.miniplayer {
+    font-family: 'W95';
+    background: #C0C0C0;
+    padding: 10px;
+    width: 95%; 
+    height: 110px;
+    z-index: 2;
+    
+}
+
+.title-bar {
+    z-index: 1;
+    background: black;
+    color: #00ff2b;
+    padding: 5px;
+    margin-bottom: 0px;
+    margin-right: 7px;
+    height: 20px;
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center;
+    overflow: hidden; /* Hide the overflow content */
+    white-space: nowrap; /* Prevent text wrapping to a new line */
+    position: relative; /* Needed for z-index to work */
+    z-index: 1; /* Ensures that this element stacks on top */
+}
+
+.controls {
+    display: flex;
+    justify-content: center; /* Center buttons horizontally */
+    align-items: center;
+    
+}
+
+.controls button {
+    background: #bdbdbd;
+    border: 2px outset #fff;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    /* align-items: center;
+    justify-content: center; */
+    display: flex; /* Make the button a flex container */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    overflow: hidden; /* Prevents content from spilling out */
+}
+
+.controls button:disabled {
+    filter: grayscale(100%);
+    cursor: default;
+}
+
+.controls button:hover:not(:disabled) {
+    background: #d3d3d3;
+}
+
+/* Additional styles for the progress bar */
+.progress-bar {
+    width: 100%; /* Full-width */
+    /* padding: 10px 0; Space above and below */
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Styles for the track */
+  .progress-bar input[type="range"] {
+    -webkit-appearance: none; /* Required to style the thumb/tracks in WebKit browsers */
+    width: 110%; /* Full-width */
+    background: transparent; /* Transparent background */
+    cursor: pointer;
+  }
+  
+  /* Styles for the track for WebKit browsers */
+  .progress-bar input[type="range"]::-webkit-slider-runnable-track {
+    height: 20px;
+    background: #808080;
+    border: 1px solid #000;
+    border-radius: 0px;
+  }
+  
+  /* Styles for the track for Mozilla browsers */
+  .progress-bar input[type="range"]::-moz-range-track {
+    height: 20px;
+    background: #808080;
+    border: 1px solid #000;
+    border-radius: 0px;
+  }
+  
+  /* Styles for the thumb for WebKit browsers */
+  .progress-bar input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Remove default appearance */
+    appearance: none;
+    margin-top: 1px; /* Required to align thumb with the track */
+    height: 16px;
+    width: 16px;
+    background-color: #bdbdbd;
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    border-left: 2px solid #ffffff; /* Lighter left border for 3D effect */
+    border-bottom: 2px solid #7b7b7b; /* Darker bottom border */
+    border-right: 2px solid #7b7b7b; /* Darker right border */
+    cursor: pointer;
+    box-shadow: 0 1px 1px #000, 0 -1px 1px #fff; /* 3D effect */
+  }
+  
+  /* Styles for the thumb for Mozilla browsers */
+  .progress-bar input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    margin-top: 1px; /* Required to align thumb with the track */
+    background-color: #bdbdbd;
+    border-top: 2px solid #ffffff; /* Lighter top border for 3D effect */
+    border-left: 2px solid #ffffff; /* Lighter left border for 3D effect */
+    border-bottom: 2px solid #7b7b7b; /* Darker bottom border */
+    border-right: 2px solid #7b7b7b; /* Darker right border */
+    cursor: pointer;
+    box-shadow: 0 1px 1px #000, 0 -1px 1px #fff; /* 3D effect */
+  }
+  
