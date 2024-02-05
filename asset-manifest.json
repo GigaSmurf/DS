@@ -1,26 +1,40 @@
 {
   "files": {
-    "main.css": "/static/css/main.b88ef451.css",
-    "main.js": "/static/js/main.c58fba21.js",
+    "main.css": "/static/css/main.99bbf94b.css",
+    "main.js": "/static/js/main.5475ab29.js",
     "static/js/787.2942b879.chunk.js": "/static/js/787.2942b879.chunk.js",
+    "static/media/George Michael - Careless Whisper.mp3": "/static/media/George Michael - Careless Whisper.b81e75031da4ed52a8e7.mp3",
+    "static/media/Anri - Remember Summer Days.mp3": "/static/media/Anri - Remember Summer Days.0cbe5c42c45f7400d762.mp3",
+    "static/media/Lamore dice ciao.mp3": "/static/media/Lamore dice ciao.00c0cf7b3805f0815254.mp3",
+    "static/media/黄昏のBAY CITY.mp3": "/static/media/黄昏のBAY CITY.567d0108353984a53a65.mp3",
+    "static/media/Erik Satie-GymnopédieNo.1.mp3": "/static/media/Erik Satie-GymnopédieNo.1.2bfa78731eb1ec0ae1cd.mp3",
+    "static/media/조덕배(Jo duck bai) - 그대 내맘에 들어오면은.mp3": "/static/media/조덕배(Jo duck bai) - 그대 내맘에 들어오면은.0ee575e3fd01e75fdc43.mp3",
+    "static/media/LacrimosaMozart.mp3": "/static/media/LacrimosaMozart.3457ee961aff9c71cace.mp3",
     "static/media/windows_98_remastered_startup.jpeg": "/static/media/windows_98_remastered_startup.81686c289d299810628e.jpeg",
+    "static/media/La chanson dHélène.mp3": "/static/media/La chanson dHélène.f5ce6eacde52d677dfcf.mp3",
+    "static/media/The Lamp Is Low.mp3": "/static/media/The Lamp Is Low.446fd4fdd2483b4ecc75.mp3",
+    "static/media/Cantina Band.mp3": "/static/media/Cantina Band.110e7711d67bac744e54.mp3",
     "static/media/micross.ttf": "/static/media/micross.bc63bb3f66faffe6af57.ttf",
     "static/media/energystar.gif": "/static/media/energystar.6046cd52b5cfd812cf27.gif",
     "static/media/startup.mp3": "/static/media/startup.935898eadb8eee0d8c83.mp3",
-    "static/media/rs.pdf": "/static/media/rs.de8a49f0bdd8f724dd5f.pdf",
     "static/media/W95FA.otf": "/static/media/W95FA.ad7cea682bb510ac5f4a.otf",
     "static/media/energystar-mobile.gif": "/static/media/energystar-mobile.b13fe91ec38bb3fdb67c.gif",
     "static/media/C64_Pro_Mono-STYLE.ttf": "/static/media/C64_Pro_Mono-STYLE.c671b8d8124c3ac41af9.ttf",
+    "static/media/rs.pdf": "/static/media/rs.0e39c8f99948df0d6a2e.pdf",
     "static/media/League_of_Legends.png": "/static/media/League_of_Legends.d1ec381094a32e5077b5.png",
     "static/media/github.png": "/static/media/github.9d51602084e0e7d12b33.png",
     "static/media/Matrix-Code.ttf": "/static/media/Matrix-Code.a2e5d60994f6bae5be3a.ttf",
     "index.html": "/index.html",
-    "main.b88ef451.css.map": "/static/css/main.b88ef451.css.map",
-    "main.c58fba21.js.map": "/static/js/main.c58fba21.js.map",
+    "static/media/forward.svg": "/static/media/forward.effe06c93f3b6ee4f3b0c90adaccd7be.svg",
+    "static/media/pause.svg": "/static/media/pause.418b9d2ab1d64030c497b45e904c79f5.svg",
+    "static/media/play.svg": "/static/media/play.b31da51ec77bb32914161423cd6d2f82.svg",
+    "static/media/stop.svg": "/static/media/stop.a9e6e75077845ed54548aeb8fd2c26b8.svg",
+    "main.99bbf94b.css.map": "/static/css/main.99bbf94b.css.map",
+    "main.5475ab29.js.map": "/static/js/main.5475ab29.js.map",
     "787.2942b879.chunk.js.map": "/static/js/787.2942b879.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b88ef451.css",
-    "static/js/main.c58fba21.js"
+    "static/css/main.99bbf94b.css",
+    "static/js/main.5475ab29.js"
   ]
 }
