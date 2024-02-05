@@ -93,7 +93,7 @@ const Minesweeper = () => {
             if (checkWin(newBoard)) {
                 setGameOver(true); // Mark the game as over (won)
                 clearInterval(timerId); // Stop the timer
-                alert(`You win with a time of ${time} seconds!`);
+                alert(`You Won!`);
             }
         }
     
