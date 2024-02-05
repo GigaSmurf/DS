@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.99bbf94b.css",
-    "main.js": "/static/js/main.5475ab29.js",
+    "main.js": "/static/js/main.4966d053.js",
     "static/js/787.2942b879.chunk.js": "/static/js/787.2942b879.chunk.js",
     "static/media/George Michael - Careless Whisper.mp3": "/static/media/George Michael - Careless Whisper.b81e75031da4ed52a8e7.mp3",
     "static/media/Anri - Remember Summer Days.mp3": "/static/media/Anri - Remember Summer Days.0cbe5c42c45f7400d762.mp3",
@@ -30,11 +30,11 @@
     "static/media/play.svg": "/static/media/play.b31da51ec77bb32914161423cd6d2f82.svg",
     "static/media/stop.svg": "/static/media/stop.a9e6e75077845ed54548aeb8fd2c26b8.svg",
     "main.99bbf94b.css.map": "/static/css/main.99bbf94b.css.map",
-    "main.5475ab29.js.map": "/static/js/main.5475ab29.js.map",
+    "main.4966d053.js.map": "/static/js/main.4966d053.js.map",
     "787.2942b879.chunk.js.map": "/static/js/787.2942b879.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.99bbf94b.css",
-    "static/js/main.5475ab29.js"
+    "static/js/main.4966d053.js"
   ]
 }
